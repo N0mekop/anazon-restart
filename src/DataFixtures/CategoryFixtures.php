@@ -8,6 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
 {
+    public const CATEGORY_PELUCHES = 'CATEGORY_PELUCHES';
     public function load(ObjectManager $manager): void
     {
         $jouet = new Category();
@@ -18,6 +19,7 @@ class CategoryFixtures extends Fixture
         $category->setTitle('Peluches');
         $category->setParent($jouet);
         $manager->persist($category);
+        $this->addReference(self::CATEGORY_PELUCHES, $category);
 
         $category = new Category();
         $category->setTitle('Voyages');
